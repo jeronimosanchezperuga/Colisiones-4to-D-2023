@@ -42,7 +42,5 @@ public class ControlesTriangulo : MonoBehaviour
             transform.Rotate(0, 0,-rotationSpeed);
         }
 
-
-        Debug.Log(transform.position.y);
     }
 }

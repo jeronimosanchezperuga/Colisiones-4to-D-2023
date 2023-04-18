@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class Mosca : MonoBehaviour
 {
+    Vector3 initialPosition;
+    public bool hasKey;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (hasKey)
+        {
+            Debug.Log("Tiene la llave");
+        }
     }
+
 
     //Destruir la mosca si colisiona con el ventilador
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ventilador")
         {
-            Destroy(gameObject);
+            transform.position = initialPosition;
+        }else if (collision.gameObject.name == "Llave")
+        {
+            hasKey = true;
+            Destroy(collision.gameObject);
         }
     }
 }
